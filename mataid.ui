@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1060</width>
+    <height>616</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="course_number"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_course_number">
+     <property name="text">
+      <string>Course number</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_school_number">
+     <property name="text">
+      <string>School number</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="group_number"/>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_full_name">
+     <property name="text">
+      <string>Full name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QLabel" name="label_aid_summ">
+     <property name="text">
+      <string>Summ</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="full_name"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_group_number">
+     <property name="text">
+      <string>Group number</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="school_number"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLineEdit" name="department"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_department">
+     <property name="text">
+      <string>Department</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4" rowspan="2">
+    <widget class="QPushButton" name="button_appoint_aid">
+     <property name="text">
+      <string>Appoint material aid</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" rowspan="2">
+    <widget class="QGroupBox" name="max_persons">
+     <property name="title">
+      <string>Not more than</string>
+     </property>
+     <widget class="QRadioButton" name="persons_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>44</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>25</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="persons_2">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>20</y>
+        <width>44</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>50</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>51</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>all</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QDoubleSpinBox" name="aid_summ"/>
+   </item>
+   <item row="1" column="4">
+    <widget class="QPushButton" name="button_show">
+     <property name="text">
+      <string>Show</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="button_exit">
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="5">
+    <widget class="QTableWidget" name="query_result_table"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
