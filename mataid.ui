@@ -54,9 +54,6 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QLineEdit" name="full_name"/>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label_group_number">
      <property name="text">
@@ -84,6 +81,19 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="3">
+    <widget class="QDoubleSpinBox" name="aid_summ"/>
+   </item>
+   <item row="1" column="4">
+    <widget class="QPushButton" name="button_show">
+     <property name="text">
+      <string>Show</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="5">
+    <widget class="QTableWidget" name="query_result_table"/>
+   </item>
    <item row="2" column="2" rowspan="2">
     <widget class="QGroupBox" name="max_persons">
      <property name="title">
@@ -93,7 +103,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>20</y>
+        <y>30</y>
         <width>44</width>
         <height>29</height>
        </rect>
@@ -106,7 +116,7 @@
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>20</y>
+        <y>30</y>
         <width>44</width>
         <height>29</height>
        </rect>
@@ -119,7 +129,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>20</y>
+        <y>30</y>
         <width>51</width>
         <height>29</height>
        </rect>
@@ -130,25 +140,8 @@
      </widget>
     </widget>
    </item>
-   <item row="3" column="3">
-    <widget class="QDoubleSpinBox" name="aid_summ"/>
-   </item>
-   <item row="1" column="4">
-    <widget class="QPushButton" name="button_show">
-     <property name="text">
-      <string>Show</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="button_exit">
-     <property name="text">
-      <string>Exit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="5">
-    <widget class="QTableWidget" name="query_result_table"/>
+   <item row="1" column="2">
+    <widget class="QLineEdit" name="full_name"/>
    </item>
   </layout>
  </widget>
