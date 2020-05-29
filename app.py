@@ -8,13 +8,14 @@ from PyQt5.QtWidgets import (
 	QApplication, QLabel, QListWidgetItem, QFileDialog, QWidget, QDialog, QCheckBox, QTableWidget, QTableWidgetItem, QHeaderView
 )
 from PyQt5.QtGui import (QFont, QBrush, QColor)
-from PyQt5.QtCore import (Qt, QSize)
+from PyQt5.QtCore import (Qt, QSize, QSettings)
 from PyQt5 import uic
 from PyQt5 import QtCore
 
 DB_PATH = 'my_db.s3db'
 TABLENAME = 'students'
 TAXES = 0.13
+SETTINGS_TRAY = 'settings/tray'
 
 FormUI, Form = uic.loadUiType('mataid.ui')
 
@@ -27,10 +28,16 @@ class my_widget(Form):
 		self.setWindowTitle("Material aid")
 		self.ui.button_show.clicked.connect(self.__show)
 		self.ui.button_appoint_aid.clicked.connect(self.__appoint_aid)
+		self.ui.button_add_budget.clicked.connect(self.__add_budget)
 		self.ui.aid_summ.setMaximum(100000.00)
 		self.ui.aid_summ.setMinimum(-100000.00)
+		self.ui.add_budget_summ.setMaximum(100000.00)
+		self.ui.add_budget_summ.setMinimum(-100000.00)
 		self.max_persons1 = int(self.ui.persons_1.text())
 		self.max_persons2 = int(self.ui.persons_2.text())
+		settings = QSettings()
+		self.budget = settings.value(SETTINGS_TRAY, 0, type=int)
+		self.ui.budget_summ.setText('%3.2f' % (self.budget / 100))
 		self.students_selection_buttons = []
 		self.dbc = db.connect(DB_PATH)
 
@@ -168,18 +175,36 @@ class my_widget(Form):
 		# Getting students
 		table = self.ui.query_result_table
 		students = [tuple([table.item(i + 1, c).text() for c in [1, 2, 3, 4]]) for i in range(table.rowCount() - 1) if self.students_selection_buttons[i].isChecked()]
+		if self.budget - len(students) * aid_summ < 0:
+			error = 'Too much summ, the budget is not enough'
+			self.__show_message_in_table(error, (255, 0, 0))
+			return
 		# Making queries
 		query_text = 'UPDATE ' + TABLENAME + ' SET current_full_sum = current_full_sum + ' + str(aid_summ) + ', tax_sum = tax_sum + ' + str(int(aid_summ * TAXES)) + ', pay_sum = pay_sum + ' + str(aid_summ - int(aid_summ * TAXES)) + ' WHERE lastname = ? AND first_name = ? AND second_name = ? AND group_num = ?'
 		try:
 			cur = self.dbc.cursor()
 			cur.executemany(query_text, students)
 			self.dbc.commit()
+			self.budget -= aid_summ * len(students)
+			settings = QSettings()
+			settings.setValue(SETTINGS_TRAY, self.budget)
+			settings.sync()
+			self.ui.budget_summ.setText('%3.2f' % (self.budget / 100))
 			result = cur.fetchall()
 			error = None
 		except Exception as exc:
 			result = None
 			error = str(exc)
 			self.__show_message_in_table(error, (255, 0, 0))
+
+
+	def __add_budget(self):
+		add_budget_summ = int(self.ui.add_budget_summ.text().replace(',', ''))
+		if self.budget + add_budget_summ < 0:
+			self.__show_message_in_table('Can\'t add the summ to the budget', (255, 0, 0))
+			return
+		self.budget += add_budget_summ
+		self.ui.budget_summ.setText(('%3.2f' % (self.budget / 100)))
 
 
 	def __ask_dialog(self, window_title, dialog_text, left_button_text, right_button_text):

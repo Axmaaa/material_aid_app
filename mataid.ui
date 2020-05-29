@@ -47,13 +47,6 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="3">
-    <widget class="QLabel" name="label_aid_summ">
-     <property name="text">
-      <string>Summ</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label_group_number">
      <property name="text">
@@ -74,24 +67,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="4" rowspan="2">
-    <widget class="QPushButton" name="button_appoint_aid">
-     <property name="text">
-      <string>Appoint material aid</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QDoubleSpinBox" name="aid_summ"/>
-   </item>
-   <item row="1" column="4">
-    <widget class="QPushButton" name="button_show">
-     <property name="text">
-      <string>Show</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="5">
+   <item row="4" column="0" colspan="6">
     <widget class="QTableWidget" name="query_result_table"/>
    </item>
    <item row="2" column="2" rowspan="2">
@@ -142,6 +118,54 @@
    </item>
    <item row="1" column="2">
     <widget class="QLineEdit" name="full_name"/>
+   </item>
+   <item row="0" column="4">
+    <widget class="QLabel" name="label_budget">
+     <property name="text">
+      <string>Budget</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="4">
+    <widget class="QLabel" name="budget_summ">
+     <property name="text">
+      <string>100000.00</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QPushButton" name="button_show">
+     <property name="text">
+      <string>Show</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QLabel" name="label_aid_summ">
+     <property name="text">
+      <string>Summ</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QDoubleSpinBox" name="aid_summ"/>
+   </item>
+   <item row="3" column="3">
+    <widget class="QPushButton" name="button_appoint_aid">
+     <property name="text">
+      <string>Appoint material aid</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QPushButton" name="button_add_budget">
+     <property name="text">
+      <string>Add budget</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4">
+    <widget class="QDoubleSpinBox" name="add_budget_summ"/>
    </item>
   </layout>
  </widget>
